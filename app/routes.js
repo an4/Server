@@ -1,34 +1,34 @@
 module.exports = function(app, passport) {
-    app.get('/', function(req, res) {
-        res.render('index.html');
+    app.get('/', function(request, response) {
+        response.sendfile('./public/views/index.html');
     });
 
-    app.get('/login', function(req, res) {
-        res.render('login.html', { message: req.flash('loginMessage') });
+    app.get('/login', function(request, response) {
+        response.sendfile('./public/views/login.html', {message: request.flash('loginMessage') });
     });
 
     // app.post('/login', do all our passport stuff here);
 
-    app.get('/signup', function(req, res) {
-        res.render('signup.html', { message: req.flash('signupMessage') });
+    app.get('/signup', function(request, response) {
+        esponse.sendfile('./public/views/signup.html', {message: request.flash('signupMessage') });
     });
 
     // app.post('/signup', do all our passport stuff here);
 
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile.html', {
-            user : req.user
+    app.get('/profile', isLoggedIn, function(request, response) {
+        response.sendfile('./public/views/profile.html', {
+            user : request.user
         });
     });
 
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
+    app.get('/logout', function(request, response) {
+        request.logout();
+        response.redirect('/');
     });
 };
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
+function isLoggedIn(request, response, next) {
+    if (request.isAuthenticated())
         return next();
-    res.redirect('/');
+    response.redirect('/');
 }

@@ -4,6 +4,7 @@ var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var path     = require('path');
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -20,14 +21,14 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-// app.set('view engine', 'ejs');
-
 app.use(session({ secret: 'lPiLIO9ZEEsfk7LlD4K6',
                   resave: 'true',
                   saveUninitialized: 'true'}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.use(express.static(__dirname + '/public'));
 
 require('./app/routes.js')(app, passport);
 
