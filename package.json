@@ -1,19 +1,17 @@
 {
-    "name": "abc",
-    "main": "server.js",
-    "dependencies": {
-        "express": "latest",
-        "mongoose": "latest",
-        "passport": "latest",
-        "passport-local": "latest",
-        "passport-google-oauth": "latest",
-        "connect-flash": "latest",
-        "bcrypt-nodejs": "latest",
-
-        "morgan": "latest",
-        "body-parser": "latest",
-        "cookie-parser": "latest",
-        "method-override": "latest",
-        "express-session": "latest"
-    }
+  "name": "abc",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "latest",
+    "connect-flash": "latest",
+    "cookie-parser": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "method-override": "latest",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "passport": "latest",
+    "passport-google-oauth": "latest",
+    "passport-local": "latest"
+  }
 }

@@ -3,20 +3,8 @@ module.exports = function(app, passport) {
         response.sendfile('./public/views/index.html');
     });
 
-    app.get('/login', function(request, response) {
-        response.sendfile('./public/views/login.html', {message: request.flash('loginMessage') });
-    });
-
-    // app.post('/login', do all our passport stuff here);
-
-    app.get('/signup', function(request, response) {
-        esponse.sendfile('./public/views/signup.html', {message: request.flash('signupMessage') });
-    });
-
-    // app.post('/signup', do all our passport stuff here);
-
-    app.get('/profile', isLoggedIn, function(request, response) {
-        response.sendfile('./public/views/profile.html', {
+    app.get('/create', isLoggedIn, function(request, response) {
+        response.sendfile('./public/views/create.html', {
             user : request.user
         });
     });
@@ -25,6 +13,16 @@ module.exports = function(app, passport) {
         request.logout();
         response.redirect('/');
     });
+
+    // Google
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    app.get('/auth/google/callback',
+    passport.authenticate('google', {
+            successRedirect : '/create',
+            failureRedirect : '/'
+    }));
+
 };
 
 function isLoggedIn(request, response, next) {
