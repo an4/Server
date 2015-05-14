@@ -5,8 +5,5 @@
         "bootstrap": "latest",
         "font-awesome": "latest",
         "angular": "latest"
-    },
-    "install": {
-        "path": "public/libs"
     }
 }

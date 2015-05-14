@@ -1,10 +1,20 @@
 module.exports = function(app, passport) {
     app.get('/', function(request, response) {
-        response.sendfile('./public/views/index.html');
+        response.sendFile('/public/views/index.html', {
+            root : process.cwd()
+        });
     });
 
     app.get('/create', isLoggedIn, function(request, response) {
-        response.sendfile('./public/views/create.html', {
+        response.sendFile('/public/views/create.html', {
+            root : process.cwd(),
+            user : request.user
+        });
+    });
+
+    app.get('/read', isLoggedIn, function(request, response) {
+        response.sendFile('/public/views/read.html', {
+            root : process.cwd(),
             user : request.user
         });
     });
@@ -19,7 +29,7 @@ module.exports = function(app, passport) {
 
     app.get('/auth/google/callback',
     passport.authenticate('google', {
-            successRedirect : '/create',
+            successRedirect : '/read',
             failureRedirect : '/'
     }));
 

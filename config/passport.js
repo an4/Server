@@ -23,28 +23,31 @@ module.exports = function(passport) {
        callbackURL     : configAuth.googleAuth.callbackURL,
     },
     function(token, refreshToken, profile, done) {
-       process.nextTick(function() {
-           User.findOne({ 'google.id' : profile.id }, function(err, user) {
-               if (err)
-                   return done(err);
-               if (user) {
-                   return done(null, user);
-               } else {
-                   var newUser          = new User();
+        process.nextTick(function() {
+            if(profile._json.domain === "bristol.ac.uk"){
+                User.findOne({ 'google.id' : profile.id }, function(err, user) {
+                    if (err)
+                        return done(err);
+                    if (user) {
+                        return done(null, user);
+                    } else {
+                       var newUser          = new User();
 
-                   newUser.google.id    = profile.id;
-                   newUser.google.token = token;
-                   newUser.google.name  = profile.displayName;
-                   newUser.google.email = profile.emails[0].value;
+                       newUser.google.id    = profile.id;
+                       newUser.google.token = token;
+                       newUser.google.name  = profile.displayName;
+                       newUser.google.email = profile.emails[0].value;
 
-                   newUser.save(function(err) {
-                       if (err)
-                           throw err;
-                       return done(null, newUser);
-                   });
-               }
-           });
-       });
+                       newUser.save(function(err) {
+                           if (err)
+                               throw err;
+                           return done(null, newUser);
+                       });
+                    }
+                });
+            }else{
+                done(new Error("Invalid host domain"));
+            }
+        });
     }));
-
 };
