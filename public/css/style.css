@@ -1,0 +1,27 @@
+.index_page {
+    background: #f9f9f9;
+}
+
+.index_container {
+    background: #21468B;
+    width: 40vw;
+    height: 20vw;
+    border-radius: 1vw;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow:: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    position: fixed;
+    top: 10vw;
+    left: 30vw;
+}
+
+.index_container_title {
+    color: white;
+    font-size: 5vw;
+    padding: 2.5vw;
+    text-align: center;
+    font-weight: 900;
+}
+
+.index_container_button {
+    text-align: center;
+}
