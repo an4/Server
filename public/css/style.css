@@ -1,8 +1,32 @@
-.index_page {
+body {
+    height: 100%;
+    width: 100%;
     background: #f9f9f9;
+    padding: 0;
+    margin: 0;
 }
 
-.index_container {
+.title_bar {
+    width: 100vw;
+    height: 20vh;
+    background: #21468B;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow:: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    position: relative;
+}
+
+.title_bar_text {
+    float: left;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 8vh;
+    bottom: 0;
+    padding: 12px 20px 12px 5vw;
+    position: absolute;
+}
+
+
+.login_container {
     background: #21468B;
     width: 40vw;
     height: 20vw;
@@ -10,11 +34,11 @@
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     -webkit-box-shadow:: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     position: fixed;
-    top: 10vw;
+    top: 30vh;
     left: 30vw;
 }
 
-.index_container_title {
+.login_container_title {
     color: white;
     font-size: 5vw;
     padding: 2.5vw;
@@ -22,6 +46,12 @@
     font-weight: 900;
 }
 
-.index_container_button {
+.login_container_button {
     text-align: center;
+}
+
+.abc {
+    background: red;
+    height: 300px;
+    width: 300px;
 }

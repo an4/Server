@@ -1,30 +1,30 @@
 var Card = require('./models/card');
 
 module.exports = function(app, passport) {
-    app.get('/', function(request, response) {
-        response.sendFile('/public/views/index.html', {
-            root : process.cwd()
-        });
-    });
+    // app.get('/', function(request, response) {
+    //     response.sendFile('/public/views/index.html', {
+    //         root : process.cwd()
+    //     });
+    // });
 
-    app.get('/main', isLoggedIn, function(request, response) {
-        response.sendFile('/public/views/main.html', {
-            root : process.cwd(),
-            user : request.user
-        });
-    });
-
-
-    app.get('/create', isLoggedIn, function(request, response) {
-        response.sendFile('/public/views/create.html', {
-            root : process.cwd(),
-            user : request.user
-        });
-    });
+    // app.get('/main', isLoggedIn, function(request, response) {
+    //     response.sendFile('/public/views/index.html', {
+    //         root : process.cwd(),
+    //         user : request.user
+    //     });
+    // });
+    //
+    //
+    // app.get('/create', isLoggedIn, function(request, response) {
+    //     response.sendFile('/public/views/index.html', {
+    //         root : process.cwd(),
+    //         user : request.user
+    //     });
+    // });
 
     app.get('/logout', function(request, response) {
         request.logout();
-        response.redirect('/login');
+        response.redirect('/');
     });
 
     // Route to test if the user is logged in or not.
@@ -37,7 +37,7 @@ module.exports = function(app, passport) {
 
     app.get('/auth/google/callback',
     passport.authenticate('google', {
-            successRedirect : '/main',
+            successRedirect : '/#/main',
             failureRedirect : '/'
     }));
 

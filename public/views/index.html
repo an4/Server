@@ -18,9 +18,15 @@
         <script src="../js/appRoutes.js"></script>
         <script src="../js/controllers/main_Ctrl.js"></script>
         <script src="../js/controllers/login_Ctrl.js"></script>
+        <script src="../js/controllers/title_Ctrl.js"></script>
 
     </head>
     <body data-ng-app="server">
+        <div class="title_bar" data-ng-controller="titleCtrl">
+            <div class="title_bar_text">
+                Student Noticeboard
+            </div>
+        </div>
         <div data-ng-view=""></div>
     </body>
 </html>

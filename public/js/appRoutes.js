@@ -57,7 +57,7 @@ angular.module('server')
                 redirectTo: '/'
             });
 
-            // $locationProvider.html5Mode(true);
+            // $locationProvider.html5Mode(true).hashPrefix('!');
 
         // .run(function($rootScope, $http){
         //     $rootScope.message = '';
