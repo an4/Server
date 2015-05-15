@@ -46,7 +46,7 @@ module.exports = function(passport) {
                     }
                 });
             }else{
-                done(new Error("Invalid host domain."));
+                return done(new Error("Invalid host domain."));
             }
         });
     }));

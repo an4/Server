@@ -1,1 +1,3 @@
-angular.module('server', []);
+'use strict';
+
+angular.module('server', ['ngRoute']);
