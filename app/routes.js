@@ -14,9 +14,17 @@ module.exports = function(app, passport) {
         });
     });
 
+
+    app.get('/create', isLoggedIn, function(request, response) {
+        response.sendFile('/public/views/create.html', {
+            root : process.cwd(),
+            user : request.user
+        });
+    });
+
     app.get('/logout', function(request, response) {
         request.logout();
-        response.redirect('/');
+        response.redirect('/login');
     });
 
     // Route to test if the user is logged in or not.
@@ -53,6 +61,13 @@ module.exports = function(app, passport) {
             }
         });
         return res.send(card);
+    });
+
+    // redirect all others to the index
+    app.get('*', function(request, response) {
+        response.sendFile('/public/views/index.html', {
+            root : process.cwd()
+        });
     });
 };
 

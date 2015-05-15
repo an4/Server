@@ -1,5 +1,5 @@
 angular.module('server')
-    .config(['$routeProvider', '$locationProvider', '$httpProvider'
+    .config(['$routeProvider', '$locationProvider', '$httpProvider',
         function($routeProvider, $locationProvider, $httpProvider) {
 
             var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
@@ -8,14 +8,12 @@ angular.module('server')
                 $http.get('/loggedin').success(function(loggedIn){
                     // Check if user is authenticated.
                     if (loggedIn === '1')
-                      /*$timeout(deferred.resolve, 0);*/
-                      deferred.resolve();
+                        deferred.resolve();
                     // Not Authenticated
                     else {
-                      $rootScope.message = 'You need to log in.';
-                      //$timeout(function(){deferred.reject();}, 0);
-                      deferred.reject();
-                      $location.url('/');
+                        $rootScope.message = 'You need to log in.';
+                        deferred.reject();
+                        $location.url('/');
                     }
                 });
                 return deferred.promise;
@@ -36,9 +34,13 @@ angular.module('server')
 
             $routeProvider.
             // Home page
+            when('/', {
+                templateUrl: 'views/login.html',
+                controller: 'loginCtrl'
+            }).
             when('/main', {
                 templateUrl: 'views/main.html',
-                controller: 'main',
+                controller: 'mainCtrl',
                 resolve: {
                     loggedin: checkLoggedin
                 }
@@ -46,7 +48,7 @@ angular.module('server')
             // Create new card
             when('/create', {
                 templateUrl: 'views/create.html',
-                controller: 'create',
+                controller: 'createCtrl',
                 resolve: {
                     loggedin: checkLoggedin
                 }
@@ -55,15 +57,15 @@ angular.module('server')
                 redirectTo: '/'
             });
 
-        })
+            // $locationProvider.html5Mode(true);
 
-        .run(function($rootScope, $http){
-            $rootScope.message = '';
-
-            // Logout function is available in any pages
-            $rootScope.logout = function(){
-                $rootScope.message = 'Logged out.';
-                $http.post('/logout');
-            };
-        });
+        // .run(function($rootScope, $http){
+        //     $rootScope.message = '';
+        //
+        //     // Logout function is available in any pages
+        //     $rootScope.logout = function(){
+        //         $rootScope.message = 'Logged out.';
+        //         $http.post('/logout');
+        //     };
+        // });
 }]);

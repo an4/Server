@@ -29,6 +29,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/views');
 
 require('./app/routes.js')(app, passport);
 
