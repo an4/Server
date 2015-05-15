@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('server', ['ngRoute']);
+angular.module('server', ['ngRoute', 'ngSanitize']);

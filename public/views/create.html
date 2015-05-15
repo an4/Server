@@ -1,0 +1,23 @@
+<div class="card_create">
+    <form>
+        <div class="card_create_title">
+            <label for="title">Title:</label>
+            <input id="title" maxlength="50" type="text" class="form-control" data-ng-required="true" ng-model="card.title" aria-describedby="basic-addon1">
+        </div>
+        <div class="card_create_text">
+            <label for="description">Description:</label>
+            <textarea maxlength="500" ng-model="card.text" data-ng-required="true" type="text" class="form-control" rows="7" id="description"></textarea>
+        </div>
+        <div class="card_create_type">
+            <label>
+                <input type="radio" ng-model="card.color" name="color" value="card_type_green" checked="checked">
+                General announcement
+            </label><br/>
+            <label>
+                <input type="radio" ng-model="card.color" name="color" value="card_type_red">
+                Important
+            </label>
+        </div>
+        <input class="btn btn-default card_submit" type="submit" ng-click="save()" value="Save" />
+    </form>
+</div>

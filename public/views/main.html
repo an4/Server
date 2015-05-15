@@ -1,2 +1,9 @@
-<div class="test">
+<div class="cards">
+    <div data-ng-repeat="card in cards">
+        <div class={{card.color}}>
+            <div class="card_title" data-ng-bind="card.title"></div>
+            <div class="card_text" data-ng-bind-html="card.text"></div>
+            <div class="card_date" data-ng-bind="card.date"></div>
+        </div>
+    </div>
 </div>
