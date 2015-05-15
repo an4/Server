@@ -1,27 +1,6 @@
 var Card = require('./models/card');
 
 module.exports = function(app, passport) {
-    // app.get('/', function(request, response) {
-    //     response.sendFile('/public/views/index.html', {
-    //         root : process.cwd()
-    //     });
-    // });
-
-    // app.get('/main', isLoggedIn, function(request, response) {
-    //     response.sendFile('/public/views/index.html', {
-    //         root : process.cwd(),
-    //         user : request.user
-    //     });
-    // });
-    //
-    //
-    // app.get('/create', isLoggedIn, function(request, response) {
-    //     response.sendFile('/public/views/index.html', {
-    //         root : process.cwd(),
-    //         user : request.user
-    //     });
-    // });
-
     app.get('/logout', function(request, response) {
         request.logout();
         response.redirect('/');
@@ -29,7 +8,7 @@ module.exports = function(app, passport) {
 
     // Route to test if the user is logged in or not.
     app.get('/loggedin', function(request, response) {
-        response.send(request.isAuthenticated() ? '1' : '0');
+        response.send(request.isAuthenticated() ? request.user : '0');
     });
 
     // Google
@@ -42,17 +21,17 @@ module.exports = function(app, passport) {
     }));
 
     // Blog post/get
-    app.get('/api/cards', function(req, res) {
+    app.get('/api/cards', function(request, response) {
         Card.find().sort({'date': -1}).exec(function(err, cards) {
             if (err)
-                res.send(err);
-            res.json(cards);
+                response.send(err);
+            response.json(cards);
         });
     });
 
-    app.post('/api/post', function (req, res) {
+    app.post('/api/post', function (request, response) {
         var card;
-        card = new Card(req.body);
+        card = new Card(request.body);
         card.save(function (err) {
             if (!err) {
               return console.log("created");
@@ -60,13 +39,18 @@ module.exports = function(app, passport) {
               return console.log(err);
             }
         });
-        return res.send(card);
+        return response.send(card);
+    });
+
+    app.get('/user', function(request, response) {
+        response.json(request.user);
     });
 
     // redirect all others to the index
     app.get('*', function(request, response) {
         response.sendFile('/public/views/index.html', {
-            root : process.cwd()
+            root : process.cwd(),
+            user : request.user
         });
     });
 };

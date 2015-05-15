@@ -12,4 +12,8 @@ angular.module('server').controller("titleCtrl", ['$scope', '$location',
         $scope.create = function() {
             $location.path("/create");
         }
+
+        $scope.logout = function() {
+            $location.path("/logout");
+        }
 }]);

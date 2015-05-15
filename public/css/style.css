@@ -95,7 +95,7 @@ body {
 
 .card_type_red {
     background: #AE1C28;
-    height: 380px;
+    height: 410px;
     width: 380px;
     border-radius: 5px;
     text-align: justify;
@@ -108,7 +108,7 @@ body {
 
 .card_type_green {
     background: #006600;
-    height: 380px;
+    height: 410px;
     width: 380px;
     border-radius: 5px;
     text-align: justify;
@@ -133,9 +133,21 @@ body {
 }
 
 .card_date {
-    padding: 8px 12px;
+    padding: 0px 12px;
     text-align: right;
     color: rgba(255,255,255, 0.56);
+}
+
+.card_author {
+    text-align: left;
+    color: rgba(255,255,255, 0.56);
+    padding: 0px 12px;
+}
+
+.card_email {
+    text-align: left;
+    color: rgba(255,255,255, 0.56);
+    padding: 5px 12px;
 }
 
 .cards {
@@ -144,7 +156,7 @@ body {
     text-align: center;
 }
 
-.title_bar_button {
+.title_bar_logout {
     width: 10vw;
     height: 7vh;
     background: #FF4F00;
@@ -159,4 +171,25 @@ body {
     font-weight: 700;
     cursor: pointer;
     cursor: hand;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow:: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.title_bar_button {
+    width: 10vw;
+    height: 7vh;
+    background: #FF4F00;
+    color: #FFFFFF;
+    font-size: 5vh;
+    margin:20px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 0;
+    right: 13vw;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    cursor: hand;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-box-shadow:: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }

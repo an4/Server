@@ -7,7 +7,7 @@ angular.module('server')
 
                 $http.get('/loggedin').success(function(loggedIn){
                     // Check if user is authenticated.
-                    if (loggedIn === '1')
+                    if (loggedIn !== '0')
                         deferred.resolve();
                     // Not Authenticated
                     else {

@@ -2,6 +2,14 @@
 
 angular.module('server').controller('createCtrl', ['$scope', '$http','$location',
     function($scope, $http, $location) {
+        var user;
+        $http.get('/user').success(function(data, status, headers, config) {
+            user = data.google;
+        }).
+        error(function(data, status, headers, config) {
+            console.log("error");
+        });
+
         $scope.card = {};
         $scope.save = function() {
             // Replace newline with <br>
@@ -18,7 +26,10 @@ angular.module('server').controller('createCtrl', ['$scope', '$http','$location'
                 mm='0'+mm
             }
             today = yyyy+'/'+mm+'/'+dd;
-            $scope.card.date = today;
+            $scope.card.date = "Date : " + today;
+
+            $scope.card.author = "Author : " + user.name;
+            $scope.card.email =  "Email   : " + user.email;
 
             $http.post('/api/post', $scope.card).
                 success(function(data) {
